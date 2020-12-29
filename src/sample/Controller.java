@@ -216,21 +216,96 @@ public class Controller {
 
     }
     /*Bài 16:Viết chương trình nhập vào vào mảng A có n phần tử*/
-    public static void sortMatrix(int[] matrix,int n)
+
+    public static void sortMatrix(int[] matrix)
     {
         Integer[] what = Arrays.stream( matrix ).boxed().toArray( Integer[]::new );
         //IntStream stream=Arrays.stream(matrix).sorted();
 
         List<Integer> list = Arrays.asList(what);
+
         list.sort(((o1, o2) -> o1 > o2?-1:1));
+
         int k=0;
         for (Integer i: list
-             ) {
+        ) {
 
             matrix[k] = i;
             k++;
         }
+    }
+    public static int[] sortMatrix(int[] matrix,int n)
+    {
+        Integer[] what = Arrays.stream( matrix ).boxed().toArray( Integer[]::new );
+        //IntStream stream=Arrays.stream(matrix).sorted();
+        int []matrix2 = new int[matrix.length+1];
+        List<Integer> list = Arrays.asList(what);
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.addAll(list);
+        list2.add(n);
+        list2.sort(((o1, o2) -> o1 > o2?-1:1));
+        int k=0;
+        for (Integer i: list2
+        ) {
 
-
+            matrix2[k] = i;
+            k++;
+        }
+        return matrix2;
+    }
+    /*Bài 17: Viết chương trình thực hiện chuẩn hoá một xâu ký tự nhập từ bàn phím */
+    public static String chuanHoa(String str) throws StringIndexOutOfBoundsException
+    {
+        str = str.trim().toLowerCase();
+        //str = str.replaceAll("\\s+"," ");
+        String []strs = str.split("\\s+");
+        for (int i=0;i<strs.length;i++
+             ) {
+            char c = strs[i].charAt(0);
+            strs[i] = strs[i].substring(1);
+            String temp = String.valueOf(c).toUpperCase();
+            strs[i]=temp.concat(strs[i]);
+           // System.out.println(strs[i]);
+        }
+        String result=  Arrays.stream(strs).reduce("",(s, s2) -> s+" "+s2);
+        return result.trim();
+    }
+    /*Bài 18: Viết chương trình thực hiện nhập một xâu ký tự và tìm từ dài nhất trong xâu đó. Từ đó xuất hiện ở vị trí nào? */
+    public static void timTudainhat(String str) throws StringIndexOutOfBoundsException
+    {
+        String []strs = str.split("\\s+");
+        int max = 0;
+        int pos = 0;
+        for (String s:strs)
+        {
+            if(max < s.length()){
+                max = s.length();
+                pos++;
+            }
+        }
+        System.out.println("từ dài nhất là :["+strs[pos]+"]");
+    }
+    public static void doiTen(String name) throws StringIndexOutOfBoundsException
+    {
+        name = chuanHoa(name);
+        String []names = name.split("\\s+");
+        String result = "";
+        if(names.length==0)
+        {
+            System.out.println("Lỗi chuyển đổi");
+        }
+        else if(names.length == 1)
+            result+= names[0];
+        else if(names.length==2)
+            result+= names[1]+" "+names[0];
+        else
+        {
+            result += names[names.length-1]+" "+names[0];
+            for(int i=1;i< names.length-1;i++)
+            {
+                result += " "+names[i];
+            }
+        }
+        System.out.println(result);
     }
 }

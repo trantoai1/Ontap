@@ -22,19 +22,22 @@ public class Main {
        // System.out.println(Controller.lietKeSNT(13));
         //System.out.println("Bài 11:");
        // System.out.println(Controller.fibo_lt(12));
-        //Integer[] n ={9,2,67,3,4,6};
+        //int[] n ={9,2,67,3,4,6};
        // Optional max =Arrays.stream(n).max((o1, o2) -> o1>o2?1:-1);
         //System.out.println(max);
-        int [][]matrix ={{1,2,3,6},{2,84,3,2},{7,8,192,5}};
+        //int [][]matrix ={{1,2,3,6},{2,84,3,2},{7,8,192,5}};
         //System.out.println(Controller.maxMatrix(matrix,3,3));
 
-       // System.out.println(Controller.timNguyenTo(matrix,3,3));
-        Controller.sortColumes(matrix,3,4);
-        for (int i=0;i<3;i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.print(matrix[i][j]+" ");
-            }
-            System.out.print("\n");
+//
+        String str = "             ";
+       // Controller.chuanHoa(str);
+        System.out.println();
+        try {
+            Controller.doiTen(str);
+        }catch (StringIndexOutOfBoundsException e)
+        {
+
         }
+        //Controller.timTudainhat(str);
     }
 }
