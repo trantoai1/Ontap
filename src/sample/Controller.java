@@ -285,7 +285,8 @@ public class Controller {
         }
         System.out.println("từ dài nhất là :["+strs[pos]+"]");
     }
-    public static void doiTen(String name) throws StringIndexOutOfBoundsException
+    /*Bài 19: Viết chương trình thực hiện nhập một xâu họ tên theo cấu trúc: họ...đệm...tên; chuyển xâu đó sang biểu diễn theo cấu trúc tên…họ…đệm*/
+    public static String doiTen(String name) throws StringIndexOutOfBoundsException
     {
         name = chuanHoa(name);
         String []names = name.split("\\s+");
@@ -306,6 +307,38 @@ public class Controller {
                 result += " "+names[i];
             }
         }
-        System.out.println(result);
+        return result;
     }
+    /*Bài 20: Viết chương trình liệt kê tất cả các hoán vị của 1, 2, .., n. */
+    public static List<String> resultHV ;
+    public static void hoanVi(List<Integer> list,String result)
+    {
+        if(list.isEmpty()) {
+            if(!resultHV.contains(result))
+            resultHV.add(result);
+            return;
+        }
+        final String resultemp = result;
+        for (Integer i: list) {
+            List<Integer> temp = new ArrayList<>();
+            temp.addAll(list);
+            result+= String.valueOf(i);
+            temp.remove(i);
+            hoanVi(temp,result);
+            result = resultemp;
+        }
+    }
+    public static void hoanVi(int n)
+    {
+        resultHV = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        //String result = "";
+        while (n>0)
+        {
+            list.add(n%10);
+            n/=10;
+        }
+        hoanVi(list,"");
+    }
+
 }
