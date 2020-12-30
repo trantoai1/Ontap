@@ -46,7 +46,7 @@ public class Matrix {
         List<Integer> result = new ArrayList<>();
         find(0,0,result);
     }
-    public void find(int x, int y, List<Integer> result)
+    private void find(int x, int y, List<Integer> result)
     {   result.add(matrix[x][y]);
         if(x==this.h-1 && y== this.w-1)
         {

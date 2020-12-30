@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class Connect {
     public static Connection layKetNoi() throws SQLException { 
         Connection ketNoi = null;
-        String uRL = "jdbc:sqlserver://TOAI-PC;databaseName=KIEMTRALTM";
+        String uRL = "jdbc:sqlserver://TOAI-PC;databaseName=NGANHANG";
         String userName = "sa";
         String password = "sa";
         try {
@@ -24,8 +24,13 @@ public class Connect {
             ketNoi = DriverManager.getConnection(uRL, userName, password);
             System.out.println("Ket noi CSDL thanh cong");
         } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
             System.out.println("Khong ket noi duoc voi CSDL");
         }
         return ketNoi;
+    }
+
+    public static void main(String[] args) throws SQLException {
+        Connect.layKetNoi();
     }
 }

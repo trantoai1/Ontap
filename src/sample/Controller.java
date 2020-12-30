@@ -1,5 +1,6 @@
 package sample;
 
+import java.io.*;
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -311,7 +312,7 @@ public class Controller {
     }
     /*Bài 20: Viết chương trình liệt kê tất cả các hoán vị của 1, 2, .., n. */
     public static List<String> resultHV ;
-    public static void hoanVi(List<Integer> list,String result)
+    private static void hoanVi(List<Integer> list,String result)
     {
         if(list.isEmpty()) {
             if(!resultHV.contains(result))
@@ -340,5 +341,44 @@ public class Controller {
         }
         hoanVi(list,"");
     }
+    /*Bài 21:*/
+    public static String readFile (String url)
+    {
+        File file = new File(url);
 
+            try {
+                return readFile(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return e.getMessage();
+            }
+
+       // return "Đọc file thất bại";
+    }
+
+    private static String readFile(File file) throws IOException {
+        InputStream input2 = null;
+        DataInputStream stream = null;
+        try {
+            input2 = new FileInputStream(file);
+            stream = new DataInputStream(input2);
+
+            byte[] arr = new byte[20000];
+            stream.read(arr);
+            String dataread = "";
+            for (byte b : arr) {
+                dataread += (char) b;
+            }
+            return dataread;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return e.getMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return e.getMessage();
+        }
+        finally {
+            input2.close();
+        }
+    }
 }
