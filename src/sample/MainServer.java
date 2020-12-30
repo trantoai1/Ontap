@@ -1,7 +1,7 @@
 package sample;
 
-import sample.Server.Server;
-import sample.Server.ServerUDP;
+import sample.server.Server;
+import sample.server.ServerUDP;
 
 import java.io.IOException;
 

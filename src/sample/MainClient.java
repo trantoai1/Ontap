@@ -1,8 +1,7 @@
 package sample;
 
-import sample.Client.Client;
-import sample.Client.ClientTCP;
-import sample.Client.ClientUDP;
+import sample.client.Client;
+import sample.client.ClientUDP;
 
 import java.io.IOException;
 import java.util.*;
